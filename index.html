@@ -5,92 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yardina Cleaning — Office Cleaning Services</title>
   <meta name="description" content="Professional office cleaning services in [Your City] by Yardina Cleaning. Reliable, eco-friendly, and customized cleaning for your workspace.">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin:0;
-      padding:0;
-      line-height:1.6;
-      color:#333;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Roboto', sans-serif; color:#333; line-height:1.6; }
+    a { text-decoration:none; }
     header {
-      background: #007BFF;
+      background: url('https://images.unsplash.com/photo-1581091215360-f6dbf920b616?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
       color: white;
-      padding: 40px 20px;
       text-align: center;
+      padding: 120px 20px 60px;
+      position: relative;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
+    header::after {
+      content:'';
+      position:absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.5);
+      z-index:0;
     }
-    header p {
-      font-size: 1.2em;
-    }
+    header h1, header p, header .cta-btn { position: relative; z-index:1; }
+    header h1 { font-size: 3em; margin-bottom: 20px; }
+    header p { font-size: 1.3em; margin-bottom: 30px; }
     .cta-btn {
-      background: #FFC107;
-      color: #333;
-      padding: 12px 25px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-      display: inline-block;
-      margin-top: 15px;
+      background: #FFC107; color:#333; padding:15px 30px;
+      font-weight:bold; border-radius:5px; display:inline-block;
+      transition: 0.3s;
     }
-    section {
-      padding: 50px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    h2 {
-      color:#007BFF;
-      margin-bottom: 20px;
-    }
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+    .cta-btn:hover { background:#e0a800; }
+    section { padding: 60px 20px; max-width:1200px; margin:auto; }
+    h2 { color:#007BFF; margin-bottom:30px; text-align:center; }
+    .services { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
     .service-box {
-      flex: 1 1 300px;
-      background: #f9f9f9;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      background:#f9f9f9; border-radius:10px;
+      flex:1 1 280px; padding:25px; box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      text-align:center; transition:0.3s;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 600px;
-      margin: auto;
-    }
-    input, textarea {
-      padding: 10px;
-      font-size: 1em;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      width: 100%;
-    }
-    button {
-      background: #007BFF;
-      color: white;
-      padding: 12px;
-      font-size: 1em;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    footer {
-      background: #f1f1f1;
-      padding: 20px;
-      text-align: center;
-      color: #555;
-    }
-    @media (max-width:768px){
-      .services{
-        flex-direction: column;
-      }
-    }
+    .service-box:hover { box-shadow:0 8px 20px rgba(0,0,0,0.15); }
+    .service-box i { font-size:40px; color:#007BFF; margin-bottom:15px; }
+    ol, ul { margin-left: 20px; margin-bottom: 20px; }
+    form { display:flex; flex-direction:column; gap:15px; max-width:600px; margin:auto; }
+    input, textarea { padding:12px; border-radius:5px; border:1px solid #ccc; font-size:1em; width:100%; }
+    textarea { resize:none; min-height:120px; }
+    button { background:#007BFF; color:white; padding:15px; font-size:1em; border:none; border-radius:5px; cursor:pointer; transition:0.3s; }
+    button:hover { background:#0056b3; }
+    footer { background:#f1f1f1; padding:25px; text-align:center; color:#555; }
+    .faq p { margin-bottom:15px; }
+    @media (max-width:768px) { .services { flex-direction:column; } header h1 { font-size:2em; } header p { font-size:1em; } }
   </style>
 </head>
 <body>
@@ -103,8 +64,8 @@
 
 <section>
   <h2>Why Choose Yardina Cleaning?</h2>
-  <p>We provide professional office cleaning services tailored to your needs. Our trained and insured staff use eco-friendly products to ensure a clean, safe, and productive workplace.</p>
-  <ul>
+  <p style="text-align:center; max-width:900px; margin:auto;">We provide professional office cleaning services tailored to your needs. Our trained and insured staff use eco-friendly products to ensure a clean, safe, and productive workplace.</p>
+  <ul style="max-width:600px; margin:20px auto; list-style:disc;">
     <li>Customized cleaning plans</li>
     <li>Eco-friendly products</li>
     <li>Trusted & trained professionals</li>
@@ -116,22 +77,27 @@
   <h2>Our Office Cleaning Services</h2>
   <div class="services">
     <div class="service-box">
+      <i class="fas fa-broom"></i>
       <h3>General Office Cleaning</h3>
       <p>Dusting, trash removal, disinfecting high-touch areas, cleaning restrooms and common spaces.</p>
     </div>
     <div class="service-box">
+      <i class="fas fa-th-large"></i>
       <h3>Floor & Carpet Care</h3>
       <p>Hard-surface floor maintenance, carpet deep-cleaning, spot treatment, and scheduled maintenance.</p>
     </div>
     <div class="service-box">
+      <i class="fas fa-utensils"></i>
       <h3>Breakroom & Kitchen Cleaning</h3>
       <p>Sanitizing counters, sinks, tables, cleaning appliances, and removing food debris.</p>
     </div>
     <div class="service-box">
+      <i class="fas fa-window-maximize"></i>
       <h3>Window & Glass Cleaning</h3>
       <p>Interior and exterior glass cleaning for streak-free professional finish.</p>
     </div>
     <div class="service-box">
+      <i class="fas fa-star"></i>
       <h3>Special Add-On Services</h3>
       <p>Deep disinfecting, upholstery cleaning, post-construction cleanup, and green cleaning upgrades.</p>
     </div>
@@ -140,7 +106,7 @@
 
 <section>
   <h2>How We Work</h2>
-  <ol>
+  <ol style="max-width:700px; margin:auto;">
     <li>Free consultation and office assessment</li>
     <li>Tailored cleaning proposal and schedule</li>
     <li>Professional team begins work</li>
@@ -160,6 +126,14 @@
     <textarea placeholder="Additional Details"></textarea>
     <button type="submit">Submit</button>
   </form>
+</section>
+
+<section class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <p><strong>Q: How often should we have our office cleaned?</strong><br>A: Depending on your needs, daily, weekly, or custom schedules are available.</p>
+  <p><strong>Q: Are your cleaning products safe?</strong><br>A: Yes, we use EPA-approved, environmentally friendly products.</p>
+  <p><strong>Q: Are your cleaners insured?</strong><br>A: All our staff are fully insured and bonded for your peace of mind.</p>
+  <p><strong>Q: What if something gets damaged during cleaning?</strong><br>A: We follow best practices to prevent damage and have protocols to handle any rare issues.</p>
 </section>
 
 <footer>
