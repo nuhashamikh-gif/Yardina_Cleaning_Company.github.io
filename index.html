@@ -116,16 +116,16 @@
 
 <section id="contact">
   <h2>Get a Free Estimate</h2>
-   action="https://formspree.io/f/mrbjzwpg"
-    method="POST"
-  <form>
-    <input type="text" placeholder="Your Name" required>
-    <input type="text" placeholder="Company Name" required>
-    <input type="email" placeholder="Email" required>
-    <input type="tel" placeholder="Phone" required>
-    <input type="text" placeholder="Office or house Size (sq ft)" required>
-    <input type="text" placeholder="Frequency (Daily/Weekly/etc)" required>
-    <textarea placeholder="Additional Details"></textarea>
+  <form action="https://formspree.io/f/mrbjzwpg" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="text" name="company" placeholder="Company Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="tel" name="phone" placeholder="Phone" required>
+    <input type="text" name="size" placeholder="Office or House Size (sq ft)" required>
+    <input type="text" name="frequency" placeholder="Frequency (Daily/Weekly/etc)" required>
+    <textarea name="message" placeholder="Additional Details"></textarea>
+    <!-- Redirect to thank-you page after submission -->
+    <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
     <button type="submit">Submit</button>
   </form>
 </section>
