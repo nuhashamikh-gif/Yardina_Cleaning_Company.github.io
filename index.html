@@ -19,7 +19,7 @@
 
     .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:18px}
     .card{background:var(--card);border-radius:14px;padding:22px;box-shadow:0 6px 24px rgba(16,24,40,0.06)}
-    .cta-btn{display:inline-block;background:var(--accent);color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700}
+    .cta-btn{display:inline-block;background:var(--accent);color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;cursor:pointer}
 
     .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
     .service{padding:16px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbffff);border:1px solid #eef6f6}
@@ -35,23 +35,15 @@
     .small{font-size:13px;color:var(--muted)}
 
     /* responsive */
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr;}
-      .services{grid-template-columns:repeat(2,1fr)}
-      .testimonials{grid-template-columns:1fr}
-    }
-    @media (max-width:520px){
-      .services{grid-template-columns:1fr}
-      header{flex-direction:column;align-items:flex-start;gap:10px}
-    }
+    @media (max-width:900px){.hero{grid-template-columns:1fr;}.services{grid-template-columns:repeat(2,1fr)}.testimonials{grid-template-columns:1fr}}
+    @media (max-width:520px){.services{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start;gap:10px}}
 
     /* form */
-    form input, form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef0;font-size:14px}
+    form input, form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef0;font-size:14px;margin-bottom:10px}
     form label{font-weight:700;font-size:13px}
     form .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
     @media (max-width:520px){form .row{grid-template-columns:1fr}}
-  </style>
-  <style>
+
     /* Gallery */
     .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:22px}
     .gallery img{width:100%;border-radius:12px;border:1px solid #e5eff0;object-fit:cover;height:160px}
@@ -64,20 +56,13 @@
     .tab-content{display:none}
     .tab-content.active{display:block}
   </style>
-
   <script>
     document.addEventListener("DOMContentLoaded",()=>{
       const buttons=document.querySelectorAll('.tab-buttons button');
       const tabs=document.querySelectorAll('.tab-content');
-      buttons.forEach(btn=>{
-        btn.addEventListener('click',()=>{
-          buttons.forEach(b=>b.classList.remove('active'));
-          tabs.forEach(t=>t.classList.remove('active'));
-          btn.classList.add('active');
-          document.getElementById(btn.dataset.tab).classList.add('active');
-        });
-      });
-    });
+      buttons.forEach(btn=>{btn.addEventListener('click',()=>{buttons.forEach(b=>b.classList.remove('active'));tabs.forEach(t=>t.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');});});
+    function openQuote(){document.getElementById('quoteModal').style.display='flex';}
+    function closeQuote(){document.getElementById('quoteModal').style.display='none';}
   </script>
 </head>
 <body>
@@ -93,7 +78,7 @@
       <nav>
         <a href="#services">Services</a>
         <a href="#testimonials">Reviews</a>
-        <a href="#contact" class="cta-btn">Call: 416‑817‑1625</a>
+        <span class="cta-btn" onclick="openQuote()">Call / Get Quote</span>
       </nav>
     </header>
 
@@ -101,7 +86,7 @@
       <div>
         <div class="card">
           <h2>Cleaning you can trust. Book today — feel the difference tomorrow.</h2>
-          <p class="small">We specialise in move‑in/move‑out cleaning, regular house cleaning, deep cleaning, and commercial office cleaning. Fully insured, background‑checked staff, eco‑friendly products available on request.</p>
+          <p class="small">We specialise in move‑in/move‑out cleaning, regular house cleaning, deep cleaning, and commercial office cleaning. Fully insured, background‑checked staff, eco-friendly products available on request.</p>
 
           <div class="services" style="margin-top:18px">
             <div class="service">
@@ -120,8 +105,6 @@
               <p class="price">From $179</p>
             </div>
           </div>
-
-          <p style="margin-top:16px"><a href="#contact" class="cta-btn"><span onclick="openQuote()" style="cursor:pointer">Request a Quote</span></a></p>
         </div>
       </div>
 
@@ -132,47 +115,7 @@
           <div><strong>Email:</strong> <a href="mailto:yardina.cleaning@outlook.com">yardina.cleaning@outlook.com</a></div>
           <div class="small">Serving Newmarket, Aurora, Bradford & York Region</div>
         </div>
-
-        <hr style="margin:14px 0;border:none;border-top:1px solid #eef6f6">
-
-        <h4>Request a free quote</h4>
-        <form action="mailto:yardina.cleaning@outlook.com" method="post" enctype="text/plain">
-          <label for="name">Your name</label>
-          <input id="name" name="name" placeholder="Full name" required>
-
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required>
-
-          <label for="msg">Message / Service required</label>
-          <textarea id="msg" name="message" rows="4" placeholder="e.g. Deep clean 3-bedroom, preferred date" required></textarea>
-
-          <p style="margin-top:10px"><button type="submit" class="cta-btn" style="border:none;cursor:pointer">Send Request</button></p>
-        </form>
       </aside>
-    </section>
-
-    <section id="testimonials" class="testimonials">
-      <div class="testimonial card">
-        <strong>"Fantastic job — on time and thorough. Highly recommend."</strong>
-        <p class="small" style="margin-top:8px">— Sarah P., Newmarket</p>
-      </div>
-      <div class="testimonial card">
-        <strong>"Professional team and great attention to detail."</strong>
-        <p class="small" style="margin-top:8px">— Mark L., Aurora</p>
-      </div>
-    </section>
-
-    <section id="services" style="margin-top:22px">
-      <div class="card">
-        <h3 style="margin-top:0">What we provide</h3>
-        <ul class="small">
-          <li>Residential cleaning: regular, deep, move in/out</li>
-          <li>Commercial & office cleaning</li>
-          <li>Carpet spot cleaning and window cleaning (on request)</li>
-          <li>Green cleaning products available</li>
-          <li>Flexible scheduling and one‑time visits</li>
-        </ul>
-      </div>
     </section>
 
     <!-- Tabs Section -->
@@ -198,9 +141,9 @@
         <h3>Why Choose Yardina Cleaning?</h3>
         <ul>
           <li>✓ Trained and insured cleaners</li>
-          <li>✓ Eco‑friendly products available</li>
+          <li>✓ Eco-friendly products available</li>
           <li>✓ Transparent affordable pricing</li>
-          <li>✓ On‑time and reliable teams</li>
+          <li>✓ On-time and reliable teams</li>
           <li>✓ Satisfaction guaranteed</li>
         </ul>
       </div>
@@ -209,9 +152,30 @@
         <h3>Frequently Asked Questions</h3>
         <p><strong>Do I need to be home?</strong><br>No, you can provide access instructions.</p>
         <p><strong>Do you bring supplies?</strong><br>Yes, we bring all supplies unless you prefer your own.</p>
-        <p><strong>How do I get a quote?</strong><br>Use the contact form or call 416‑817‑1625.</p>
+        <p><strong>How do I get a quote?</strong><br>Use the popup form by clicking Get Quote.</p>
       </div>
     </section>
+
+    <!-- Quote Modal -->
+    <div id="quoteModal" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;">
+      <div style="background:white;width:100%;max-width:420px;padding:22px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.2);position:relative;">
+        <button onclick="closeQuote()" style="position:absolute;top:10px;right:12px;background:none;border:none;font-size:20px;cursor:pointer">×</button>
+        <h2 style="margin-top:0">Request a Quote</h2>
+        <form id="quoteForm">
+          <label>Name</label>
+          <input name="name" placeholder="Your name" required>
+
+          <label>Email</label>
+          <input name="email" type="email" placeholder="you@example.com" required>
+
+          <label>Service Required</label>
+          <textarea name="service" rows="4" placeholder="Type of cleaning, home size, preferred date" required></textarea>
+
+          <button type="submit" style="margin-top:12px;background:#0ea5a4;color:white;padding:12px 18px;border-radius:10px;border:none;width:100%;cursor:pointer;font-weight:700">Send Request</button>
+        </form>
+        <p id="formMessage" style="margin-top:12px;color:green;display:none">Thank you! Your request has been sent.</p>
+      </div>
+    </div>
 
     <footer>
       <div>
@@ -221,35 +185,14 @@
       <div class="small">© Yardina Cleaning — Proudly serving York Region</div>
     </footer>
   </div>
-  <!-- Quote Modal -->
-  <div id="quoteModal" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;">
-    <div style="background:white;width:100%;max-width:420px;padding:22px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.2);position:relative;">
-      <button onclick="closeQuote()" style="position:absolute;top:10px;right:12px;background:none;border:none;font-size:20px;cursor:pointer">×</button>
-      <h2 style="margin-top:0">Request a Quote</h2>
-      <form action="mailto:yardina.cleaning@outlook.com" method="post" enctype="text/plain">
-        <label>Name</label>
-        <input name="name" placeholder="Your name" style="width:100%;padding:10px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc">
-
-        <label>Email</label>
-        <input name="email" type="email" placeholder="you@example.com" style="width:100%;padding:10px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc">
-
-        <label>Service Required</label>
-        <textarea name="service" rows="4" placeholder="Type of cleaning, home size, preferred date" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc"></textarea>
-
-        <button type="submit" style="margin-top:12px;background:#0ea5a4;color:white;padding:12px 18px;border-radius:10px;border:none;width:100%;cursor:pointer;font-weight:700">Send Request</button>
-      </form>
-    </div>
-  </div>
 
   <script>
-    function openQuote(){
-      document.getElementById('quoteModal').style.display='flex';
-    }
-    function closeQuote(){
-      document.getElementById('quoteModal').style.display='none';
-    }
+    document.getElementById('quoteForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      fetch('https://formspree.io/f/yourformid', {method:'POST',body:new FormData(this)})
+        .then(()=>{document.getElementById('formMessage').style.display='block';this.reset();})
+        .catch(()=>{alert('Oops! There was a problem.')});
+    });
   </script>
-
 </body>
 </html>
-
