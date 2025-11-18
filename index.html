@@ -1,4 +1,5 @@
-<!doctype html>
+
+   <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -34,33 +35,39 @@
     .contact-grid{display:flex;flex-direction:column;gap:8px}
     .small{font-size:13px;color:var(--muted)}
 
-    /* responsive */
     @media (max-width:900px){.hero{grid-template-columns:1fr;}.services{grid-template-columns:repeat(2,1fr)}.testimonials{grid-template-columns:1fr}}
     @media (max-width:520px){.services{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start;gap:10px}}
 
-    /* form */
-    form input, form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef0;font-size:14px;margin-bottom:10px}
-    form label{font-weight:700;font-size:13px}
-    form .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-    @media (max-width:520px){form .row{grid-template-columns:1fr}}
+    form input, form textarea, form button{width:100%;padding:10px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;font-size:14px}
+    form button{background-color:#0ea5a4;color:white;border:none;font-weight:700;cursor:pointer}
 
-    /* Gallery */
     .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:22px}
     .gallery img{width:100%;border-radius:12px;border:1px solid #e5eff0;object-fit:cover;height:160px}
 
-    /* Tabs */
     .tabs{margin-top:24px}
     .tab-buttons{display:flex;gap:10px;margin-bottom:12px}
     .tab-buttons button{padding:10px 14px;border-radius:8px;border:1px solid #dce8ea;background:#fff;cursor:pointer;font-weight:600}
     .tab-buttons button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
     .tab-content{display:none}
     .tab-content.active{display:block}
+
+    /* Modal */
+    #quoteModal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;}
+    #quoteModal .modal-content{background:white;width:100%;max-width:420px;padding:22px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.2);position:relative}
+    #quoteModal .modal-content button.close-btn{position:absolute;top:10px;right:12px;background:none;border:none;font-size:20px;cursor:pointer}
   </style>
   <script>
     document.addEventListener("DOMContentLoaded",()=>{
       const buttons=document.querySelectorAll('.tab-buttons button');
       const tabs=document.querySelectorAll('.tab-content');
-      buttons.forEach(btn=>{btn.addEventListener('click',()=>{buttons.forEach(b=>b.classList.remove('active'));tabs.forEach(t=>t.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');});});
+      buttons.forEach(btn=>{btn.addEventListener('click',()=>{
+        buttons.forEach(b=>b.classList.remove('active'));
+        tabs.forEach(t=>t.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+      });
+    });
     function openQuote(){document.getElementById('quoteModal').style.display='flex';}
     function closeQuote(){document.getElementById('quoteModal').style.display='none';}
   </script>
@@ -152,28 +159,31 @@
         <h3>Frequently Asked Questions</h3>
         <p><strong>Do I need to be home?</strong><br>No, you can provide access instructions.</p>
         <p><strong>Do you bring supplies?</strong><br>Yes, we bring all supplies unless you prefer your own.</p>
-        <p><strong>How do I get a quote?</strong><br>Use the popup form by clicking Get Quote.</p>
+        <p><strong>How do I get a quote?</strong><br>Click the Get Quote button to open the form.</p>
       </div>
     </section>
 
-    <!-- Quote Modal -->
-    <div id="quoteModal" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;">
-      <div style="background:white;width:100%;max-width:420px;padding:22px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.2);position:relative;">
-        <button onclick="closeQuote()" style="position:absolute;top:10px;right:12px;background:none;border:none;font-size:20px;cursor:pointer">×</button>
+    <!-- Quote Modal with Formspree -->
+    <div id="quoteModal">
+      <div class="modal-content">
+        <button class="close-btn" onclick="closeQuote()">×</button>
         <h2 style="margin-top:0">Request a Quote</h2>
-        <form id="quoteForm">
-          <label>Name</label>
-          <input name="name" placeholder="Your name" required>
-
-          <label>Email</label>
-          <input name="email" type="email" placeholder="you@example.com" required>
-
-          <label>Service Required</label>
-          <textarea name="service" rows="4" placeholder="Type of cleaning, home size, preferred date" required></textarea>
-
-          <button type="submit" style="margin-top:12px;background:#0ea5a4;color:white;padding:12px 18px;border-radius:10px;border:none;width:100%;cursor:pointer;font-weight:700">Send Request</button>
+        <!-- Formspree Form -->
+        <form action="https://formspree.io/f/mrbjzwpg" method="POST">
+          <label>
+            Your name:
+            <input type="text" name="name" required>
+          </label>
+          <label>
+            Your email:
+            <input type="email" name="email" required>
+          </label>
+          <label>
+            Service Required:
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+          <button type="submit">Send</button>
         </form>
-        <p id="formMessage" style="margin-top:12px;color:green;display:none">Thank you! Your request has been sent.</p>
       </div>
     </div>
 
@@ -185,14 +195,5 @@
       <div class="small">© Yardina Cleaning — Proudly serving York Region</div>
     </footer>
   </div>
-
-  <script>
-    document.getElementById('quoteForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      fetch('https://formspree.io/f/mrbjzwpg', {method:'POST',body:new FormData(this)})
-        .then(()=>{document.getElementById('formMessage').style.display='block';this.reset();})
-        .catch(()=>{alert('Oops! There was a problem.')});
-    });
-  </script>
 </body>
 </html>
