@@ -1,9 +1,160 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>My Website</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Yardina Cleaning — Professional Cleaning Services</title>
+  <meta name="description" content="Yardina Cleaning - Reliable residential & commercial cleaning in Newmarket and surrounding areas. Book online or call 416‑817‑1625.">
+  <style>
+    :root{--accent:#0ea5a4;--dark:#0f172a;--muted:#64748b;--card:#ffffff}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.5;margin:0;color:var(--dark);background:linear-gradient(180deg,#fbfdff, #f7fbfb);}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px}
+    h1{font-size:28px;margin:0}
+    p.lead{color:var(--muted);margin:6px 0 0}
+    nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:600}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:18px}
+    .card{background:var(--card);border-radius:14px;padding:22px;box-shadow:0 6px 24px rgba(16,24,40,0.06)}
+    .cta-btn{display:inline-block;background:var(--accent);color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700}
+
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+    .service{padding:16px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbffff);border:1px solid #eef6f6}
+    .service h3{margin:8px 0 6px}
+    .price{font-weight:800;color:var(--accent)}
+
+    .testimonials{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .testimonial{padding:16px;border-radius:10px;background:#fcffff;border:1px solid #eef6f6}
+
+    footer{margin-top:28px;padding:20px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    .contact-grid{display:flex;flex-direction:column;gap:8px}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .testimonials{grid-template-columns:1fr}
+    }
+    @media (max-width:520px){
+      .services{grid-template-columns:1fr}
+      header{flex-direction:column;align-items:flex-start;gap:10px}
+    }
+
+    /* form */
+    form input, form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef0;font-size:14px}
+    form label{font-weight:700;font-size:13px}
+    form .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    @media (max-width:520px){form .row{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-  <h1>Hello! My GitHub Pages website is working 🎉</h1>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">YC</div>
+        <div>
+          <h1>Yardina Cleaning</h1>
+          <p class="lead">Reliable residential & commercial cleaning — Newmarket & York Region</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact" class="cta-btn">Call: 416‑817‑1625</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="card">
+          <h2>Cleaning you can trust. Book today — feel the difference tomorrow.</h2>
+          <p class="small">We specialise in move‑in/move‑out cleaning, regular house cleaning, deep cleaning, and commercial office cleaning. Fully insured, background‑checked staff, eco‑friendly products available on request.</p>
+
+          <div class="services" style="margin-top:18px">
+            <div class="service">
+              <h3>Standard Home Clean</h3>
+              <p class="small">Weekly | Bi-weekly | Monthly</p>
+              <p class="price">From $79 / visit</p>
+            </div>
+            <div class="service">
+              <h3>Deep Clean</h3>
+              <p class="small">Thorough top-to-bottom cleaning</p>
+              <p class="price">From $149</p>
+            </div>
+            <div class="service">
+              <h3>Move In / Move Out</h3>
+              <p class="small">Fast, reliable & checklist-driven</p>
+              <p class="price">From $179</p>
+            </div>
+          </div>
+
+          <p style="margin-top:16px"><a href="#contact" class="cta-btn">Request a Quote</a></p>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h3 style="margin-top:0">Quick Contact</h3>
+        <div class="contact-grid">
+          <div><strong>Phone:</strong> <a href="tel:+14168171625">416‑817‑1625</a></div>
+          <div><strong>Email:</strong> <a href="mailto:yardina.cleaning@outlook.com">yardina.cleaning@outlook.com</a></div>
+          <div class="small">Serving Newmarket, Aurora, Bradford & York Region</div>
+        </div>
+
+        <hr style="margin:14px 0;border:none;border-top:1px solid #eef6f6">
+
+        <h4>Request a free quote</h4>
+        <form action="mailto:yardina.cleaning@outlook.com" method="post" enctype="text/plain">
+          <label for="name">Your name</label>
+          <input id="name" name="name" placeholder="Full name" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+          <label for="msg">Message / Service required</label>
+          <textarea id="msg" name="message" rows="4" placeholder="e.g. Deep clean 3-bedroom, preferred date" required></textarea>
+
+          <p style="margin-top:10px"><button type="submit" class="cta-btn" style="border:none;cursor:pointer">Send Request</button></p>
+        </form>
+      </aside>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+      <div class="testimonial card">
+        <strong>"Fantastic job — on time and thorough. Highly recommend."</strong>
+        <p class="small" style="margin-top:8px">— Sarah P., Newmarket</p>
+      </div>
+      <div class="testimonial card">
+        <strong>"Professional team and great attention to detail."</strong>
+        <p class="small" style="margin-top:8px">— Mark L., Aurora</p>
+      </div>
+    </section>
+
+    <section id="services" style="margin-top:22px">
+      <div class="card">
+        <h3 style="margin-top:0">What we provide</h3>
+        <ul class="small">
+          <li>Residential cleaning: regular, deep, move in/out</li>
+          <li>Commercial & office cleaning</li>
+          <li>Carpet spot cleaning and window cleaning (on request)</li>
+          <li>Green cleaning products available</li>
+          <li>Flexible scheduling and one‑time visits</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <strong>Yardina Cleaning</strong>
+        <div class="small">Call: <a href="tel:+14168171625">416‑817‑1625</a> • <a href="mailto:yardina.cleaning@outlook.com">yardina.cleaning@outlook.com</a></div>
+      </div>
+      <div class="small">© Yardina Cleaning — Proudly serving York Region</div>
+    </footer>
+  </div>
 </body>
 </html>
+
