@@ -51,7 +51,20 @@
     button:hover { background:#0056b3; }
     footer { background:#f1f1f1; padding:25px; text-align:center; color:#555; }
     .faq p { margin-bottom:15px; }
-    @media (max-width:768px) { .services { flex-direction:column; } header h1 { font-size:2em; } header p { font-size:1em; } }
+
+    /* Testimonials slider */
+    .testimonial-slider { position: relative; max-width: 1000px; margin: auto; overflow: hidden; }
+    .testimonial-track { display: flex; transition: transform 0.5s ease-in-out; }
+    .testimonial-box { flex: 0 0 100%; background:#f9f9f9; border-radius:10px; padding:30px; box-shadow:0 5px 15px rgba(0,0,0,0.1); text-align:center; }
+    .testimonial-box i { font-size:40px; color:#FFC107; margin-bottom:15px; display:block; }
+    .testimonial-box p { margin-bottom:10px; font-style:italic; }
+    .testimonial-box strong { display:block; margin-top:10px; color:#007BFF; }
+
+    @media (max-width:768px) { 
+      .services { flex-direction:column; }
+      header h1 { font-size:2em; } 
+      header p { font-size:1em; } 
+    }
   </style>
 </head>
 <body>
@@ -59,4 +72,129 @@
 <header>
   <h1>Professional Office and House Cleaning</h1>
   <p>Reliable, eco-friendly, and customized cleaning services for your workspace</p>
-  <a href="#conta
+  <a href="#contact" class="cta-btn">Get a Free Quote</a>
+</header>
+
+<section>
+  <h2>Why Choose Yardina Cleaning?</h2>
+  <p style="text-align:center; max-width:900px; margin:auto;">We provide professional office and house cleaning services tailored to your needs. Our trained and insured staff use eco-friendly products to ensure a clean, safe, and productive workplace.</p>
+  <ul style="max-width:600px; margin:20px auto; list-style:disc;">
+    <li>Customized cleaning plans</li>
+    <li>Eco-friendly products</li>
+    <li>Trusted & trained professionals</li>
+    <li>Quality assurance and satisfaction guarantee</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Our Office and House Cleaning Services</h2>
+  <div class="services">
+    <div class="service-box">
+      <i class="fas fa-broom"></i>
+      <h3>General Office and House Cleaning</h3>
+      <p>Dusting, trash removal, disinfecting high-touch areas, cleaning restrooms and common spaces.</p>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-th-large"></i>
+      <h3>Floor & Carpet Care</h3>
+      <p>Hard-surface floor maintenance, carpet deep-cleaning, spot treatment, and scheduled maintenance.</p>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-utensils"></i>
+      <h3>Breakroom & Kitchen Cleaning</h3>
+      <p>Sanitizing counters, sinks, tables, cleaning appliances, and removing food debris.</p>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-window-maximize"></i>
+      <h3>Window & Glass Cleaning</h3>
+      <p>Interior and exterior glass cleaning for streak-free professional finish.</p>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-star"></i>
+      <h3>Special Add-On Services</h3>
+      <p>Deep disinfecting, upholstery cleaning, post-construction cleanup, and green cleaning upgrades.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Slider -->
+<section>
+  <h2>What Our Clients Say</h2>
+  <div class="testimonial-slider">
+    <div class="testimonial-track">
+      <div class="testimonial-box">
+        <i class="fas fa-quote-left"></i>
+        <p>"Yardina Cleaning did an amazing job with our office. Everything is sparkling clean and the staff were professional and friendly."</p>
+        <strong>- Sarah L., Toronto</strong>
+      </div>
+      <div class="testimonial-box">
+        <i class="fas fa-quote-left"></i>
+        <p>"Our home has never been cleaner! Yardina’s team is thorough, punctual, and uses eco-friendly products we trust."</p>
+        <strong>- John D., Newmarket</strong>
+      </div>
+      <div class="testimonial-box">
+        <i class="fas fa-quote-left"></i>
+        <p>"Professional, reliable, and consistent service. Highly recommend Yardina Cleaning for any business or residential needs."</p>
+        <strong>- Priya K., Vaughan</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>How We Work</h2>
+  <ol style="max-width:700px; margin:auto;">
+    <li>Free consultation and office and house assessment</li>
+    <li>Tailored cleaning proposal and schedule</li>
+    <li>Professional team begins work</li>
+    <li>Regular inspections and quality checks</li>
+  </ol>
+</section>
+
+<section id="contact">
+  <h2>Get a Free Estimate</h2>
+  <form action="https://formspree.io/f/mrbjzwpg" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="text" name="company" placeholder="Company Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="tel" name="phone" placeholder="Phone" required>
+    <input type="text" name="property_name" placeholder="Property Name">
+    <input type="text" name="service_type" placeholder="Service Type (Office/House/Other)">
+    <input type="text" name="size" placeholder="Office or House Size (sq ft)" required>
+    <input type="text" name="frequency" placeholder="Frequency (Daily/Weekly/etc)" required>
+    <textarea name="message" placeholder="Additional Details"></textarea>
+    <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<section class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <p><strong>Q: How often should we have our office and house cleaned?</strong><br>A: Depending on your needs, daily, weekly, or custom schedules are available.</p>
+  <p><strong>Q: Are your cleaning products safe?</strong><br>A: Yes, we use EPA-approved, environmentally friendly products.</p>
+  <p><strong>Q: Are your cleaners insured?</strong><br>A: All our staff are fully insured and bonded for your peace of mind.</p>
+  <p><strong>Q: What if something gets damaged during cleaning?</strong><br>A: We follow best practices to prevent damage and have protocols to handle any rare issues.</p>
+</section>
+
+<footer>
+  <p>&copy; 2025 Yardina Cleaning Company. All rights reserved.</p>
+  <p>Email: info@yardinacleaning.com | Phone: (416) 817-1625</p>
+</footer>
+
+<!-- Slider JS -->
+<script>
+  const track = document.querySelector('.testimonial-track');
+  const slides = document.querySelectorAll('.testimonial-box');
+  let index = 0;
+
+  function showNextSlide() {
+    index++;
+    if (index >= slides.length) index = 0;
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  setInterval(showNextSlide, 4000); // Change slide every 4 seconds
+</script>
+
+</body>
+</html>
