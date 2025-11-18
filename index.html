@@ -8,8 +8,8 @@
 
 <style>
 :root{--accent:#0ea5a4;--dark:#0f172a;--muted:#64748b;--card:#ffffff}
-*{box-sizing:border-box}
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.5;margin:0;color:var(--dark);background:linear-gradient(180deg,#fbfdff, #f7fbfb);scroll-behavior:smooth;}
+*{box-sizing:border-box;}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.5;margin:0;color:var(--dark);background:#f7fbfb;scroll-behavior:smooth;}
 .container{max-width:1100px;margin:0 auto;padding:28px}
 header{display:flex;align-items:center;justify-content:space-between;padding:18px 0;position:sticky;top:0;background:white;z-index:1000;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
 .brand{display:flex;gap:12px;align-items:center}
@@ -20,49 +20,91 @@ nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:600;t
 nav a:hover{color:var(--accent);}
 .cta-btn{display:inline-block;background:var(--accent);color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;cursor:pointer;transition:transform 0.2s, box-shadow 0.2s;}
 .cta-btn:hover{transform:translateY(-3px);box-shadow:0 6px 12px rgba(0,0,0,0.15);}
-.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:18px;position:relative;overflow:hidden;}
-.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;background:url('https://images.unsplash.com/photo-1581579188871-45ea61f2a0c8?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;z-index:0;border-radius:14px;opacity:0.15;animation:fadeIn 2s ease;}
-.hero h2 span{display:inline-block;animation:fadeInUp 1s ease forwards;opacity:0;}
-@keyframes fadeIn{from{opacity:0} to{opacity:0.15}}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)}}
-.card{background:var(--card);border-radius:14px;padding:22px;box-shadow:0 6px 24px rgba(16,24,40,0.06);position:relative;z-index:1;transition:transform 0.3s;}
-.card:hover{transform:translateY(-4px);}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 480px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 18px;
+}
+.hero-bg {
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:url('https://images.unsplash.com/photo-1581579188871-45ea61f2a0c8?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  z-index:0;
+  filter: brightness(0.55);
+}
+.hero-content {
+  position: relative;
+  z-index:1;
+  color:white;
+  max-width:600px;
+  padding:40px 28px;
+  animation:fadeInUp 1s ease forwards;
+}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.hero-content h2{
+  font-size:36px;
+  margin-bottom:16px;
+  line-height:1.2;
+}
+.hero-content p{
+  font-size:18px;
+  margin-bottom:24px;
+}
+.hero-buttons{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.hero-buttons .cta-btn{
+  font-size:16px;
+  padding:14px 20px;
+}
+.hero-image{
+  position:absolute;
+  bottom:0;
+  right:0;
+  max-width:400px;
+  width:40%;
+  animation:float 3s ease-in-out infinite;
+}
+
+/* Services Cards */
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
-.service{padding:16px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbffff);border:1px solid #eef6f6;transition:transform 0.3s;}
+.service{padding:16px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbffff);border:1px solid #eef6f6;transition:transform 0.3s,opacity 0.6s;opacity:0;}
+.service.visible{opacity:1;}
 .service:hover{transform:translateY(-4px);}
 .service h3{margin:8px 0 6px}
 .price{font-weight:800;color:var(--accent)}
-.testimonials{margin-top:22px;overflow:hidden;position:relative}
-.testimonial-slide{display:flex;transition:transform 0.5s ease;}
-.testimonial{padding:16px;border-radius:10px;background:#fcffff;border:1px solid #eef6f6;margin-right:14px;flex:0 0 100%;}
-footer{margin-top:28px;padding:20px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-.contact-grid{display:flex;flex-direction:column;gap:8px}
-.small{font-size:13px;color:var(--muted)}
-@media (max-width:900px){.hero{grid-template-columns:1fr;}.services{grid-template-columns:repeat(2,1fr)}.testimonial{flex:0 0 100%}}
-@media (max-width:520px){.services{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start;gap:10px}}
-form input, form textarea, form button{width:100%;padding:10px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;font-size:14px}
-form button{background-color:#0ea5a4;color:white;border:none;font-weight:700;cursor:pointer;transition:transform 0.2s}
-form button:hover{transform:translateY(-2px);}
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:22px}
-.gallery img{width:100%;border-radius:12px;border:1px solid #e5eff0;object-fit:cover;height:160px;display:block;}
+
+/* Tabs */
 .tabs{margin-top:24px}
 .tab-buttons{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
 .tab-buttons button{padding:10px 14px;border-radius:8px;border:1px solid #dce8ea;background:#fff;cursor:pointer;font-weight:600;transition:all 0.3s}
 .tab-buttons button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .tab-content{display:none;opacity:0;transition:opacity 0.5s;}
 .tab-content.active{display:block;opacity:1}
+
+/* Modal */
 #quoteModal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;opacity:0;transition:opacity 0.3s ease;}
 #quoteModal.show{display:flex;opacity:1;}
 #quoteModal .modal-content{background:white;width:100%;max-width:420px;padding:22px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.2);position:relative}
 #quoteModal .modal-content button.close-btn{position:absolute;top:10px;right:12px;background:none;border:none;font-size:20px;cursor:pointer}
-/* Sticky Mobile CTA Button */
-#mobileCTA{display:none;position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--accent);color:white;padding:14px 24px;border-radius:50px;font-weight:700;z-index:1001;box-shadow:0 6px 16px rgba(0,0,0,0.2);cursor:pointer;transition:transform 0.2s;}
-#mobileCTA:hover{transform:translateX(-50%) scale(1.05);}
 
-/* WhatsApp Floating Button */
+/* WhatsApp Button */
 #whatsappBtn{position:fixed;bottom:90px;right:16px;background:#25D366;color:white;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:1001;box-shadow:0 6px 16px rgba(0,0,0,0.2);cursor:pointer;font-size:28px;text-decoration:none;animation:float 2s ease-in-out infinite;}
 #whatsappBtn:hover{transform:scale(1.1);}
+
 @keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@media (max-width:900px){.services{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.services{grid-template-columns:1fr}}
 </style>
 
 <script>
@@ -77,17 +119,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     document.getElementById(btn.dataset.tab).classList.add('active');
   });});
 
-  // Testimonials slider
-  const slideContainer=document.querySelector('.testimonial-slide');
-  if(slideContainer){
-    let index=0;
-    const total=slideContainer.children.length;
-    setInterval(()=>{
-      index=(index+1)%total;
-      slideContainer.style.transform=`translateX(-${index*100}%)`;
-    },4000);
-  }
-
   // Smooth scroll for nav links
   document.querySelectorAll('nav a[href^="#"]').forEach(anchor=>{
     anchor.addEventListener('click', function(e){
@@ -96,6 +127,15 @@ document.addEventListener("DOMContentLoaded",()=>{
       target.scrollIntoView({behavior:'smooth', block:'start'});
     });
   });
+
+  // Scroll animation for services
+  const services=document.querySelectorAll('.service');
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('visible');}
+    });
+  }, {threshold:0.2});
+  services.forEach(service=>observer.observe(service));
 });
 
 function openQuote(){document.getElementById('quoteModal').classList.add('show');}
@@ -107,7 +147,7 @@ function closeQuote(){document.getElementById('quoteModal').classList.remove('sh
 <div class="container">
 <header>
   <div class="brand">
-    <div class="logo"><img src="yardina-logo.png" alt="Yardina Cleaning Logo"></div>
+    <div class="logo"><img src="https://i.imgur.com/7V4gKZs.png" alt="Yardina Cleaning Logo"></div>
     <div>
       <h1>Yardina Cleaning</h1>
       <p class="lead">Reliable residential & commercial cleaning — Newmarket & York Region</p>
@@ -116,34 +156,30 @@ function closeQuote(){document.getElementById('quoteModal').classList.remove('sh
   <nav>
     <a href="#services">Services</a>
     <a href="#testimonials">Reviews</a>
-    <span class="cta-btn" onclick="openQuote()">Call / Get Quote</span>
+    <span class="cta-btn" onclick="openQuote()">Get a Quote</span>
   </nav>
 </header>
 
 <section class="hero">
   <div class="hero-bg"></div>
-  <div>
-    <div class="card">
-      <h2><span>Cleaning you can trust.</span> <span>Book today — feel the difference tomorrow.</span></h2>
-      <p class="small">Move-in/move-out, deep cleaning, regular house & office cleaning. Fully insured, background-checked staff.</p>
-      <div class="services" id="services">
-        <div class="service"><h3>Standard Home Clean</h3><p class="small">Weekly | Bi-weekly | Monthly</p><p class="price">From $79 / visit</p></div>
-        <div class="service"><h3>Deep Clean</h3><p class="small">Thorough top-to-bottom cleaning</p><p class="price">From $149</p></div>
-        <div class="service"><h3>Move In / Move Out</h3><p class="small">Fast, reliable & checklist-driven</p><p class="price">From $179</p></div>
-      </div>
+  <div class="hero-content">
+    <h2>Professional Cleaning Services <br> You Can Trust</h2>
+    <p>Residential & commercial cleaning in Newmarket, Aurora, Bradford & York Region. Move-in, deep cleaning, and regular cleaning.</p>
+    <div class="hero-buttons">
+      <span class="cta-btn" onclick="openQuote()">Get a Quote</span>
+      <a class="cta-btn" href="https://wa.me/14168171625" target="_blank">WhatsApp Us</a>
     </div>
   </div>
-  <aside class="card">
-    <h3 style="margin-top:0">Quick Contact</h3>
-    <div class="contact-grid">
-      <div><strong>Phone:</strong> <a href="tel:+14168171625">416‑817‑1625</a></div>
-      <div><strong>Email:</strong> <a href="mailto:yardina.cleaning@outlook.com">yardina.cleaning@outlook.com</a></div>
-      <div class="small">Serving Newmarket, Aurora, Bradford & York Region</div>
-    </div>
-  </aside>
+  <img class="hero-image" src="https://images.unsplash.com/photo-1581579188871-45ea61f2a0c8?auto=format&fit=crop&w=800&q=80" alt="Cleaning services illustration">
 </section>
 
-<section class="tabs card">
+<section class="services" id="services">
+  <div class="service"><h3>Standard Home Clean</h3><p class="small">Weekly | Bi-weekly | Monthly</p><p class="price">From $79 / visit</p></div>
+  <div class="service"><h3>Deep Clean</h3><p class="small">Thorough top-to-bottom cleaning</p><p class="price">From $149</p></div>
+  <div class="service"><h3>Move In / Move Out</h3><p class="small">Fast, reliable & checklist-driven</p><p class="price">From $179</p></div>
+</section>
+
+<section class="tabs card" id="testimonials">
   <div class="tab-buttons">
     <button class="active" data-tab="tab1">Gallery</button>
     <button data-tab="tab2">Why Choose Us</button>
@@ -152,9 +188,9 @@ function closeQuote(){document.getElementById('quoteModal').classList.remove('sh
   <div id="tab1" class="tab-content active">
     <h3>Cleaning Gallery</h3>
     <div class="gallery">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1581579188871-45ea61f2a0c8" alt="Cleaning service example">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1581578017423-2f3c7e0d4a34" alt="Office cleaning example">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1598300053650-5c0b35a2b0c8" alt="Deep cleaning example">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1581579188871-45ea61f2a0c8?auto=format&fit=crop&w=800&q=80" alt="Cleaning 1">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1581578017423-2f3c7e0d4a34?auto=format&fit=crop&w=800&q=80" alt="Cleaning 2">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1598300053650-5c0b35a2b0c8?auto=format&fit=crop&w=800&q=80" alt="Cleaning 3">
     </div>
   </div>
   <div id="tab2" class="tab-content">
@@ -175,15 +211,6 @@ function closeQuote(){document.getElementById('quoteModal').classList.remove('sh
   </div>
 </section>
 
-<section class="card testimonials" id="testimonials">
-  <h3>Customer Reviews</h3>
-  <div class="testimonial-slide">
-    <div class="testimonial">"Amazing cleaning service! Punctual and thorough." – Sarah L.</div>
-    <div class="testimonial">"My office has never looked better. Highly recommend." – Mark D.</div>
-    <div class="testimonial">"Excellent move-out cleaning. Got my full deposit back!" – Emily R.</div>
-  </div>
-</section>
-
 <div id="quoteModal">
   <div class="modal-content">
     <button class="close-btn" onclick="closeQuote()">×</button>
@@ -197,10 +224,6 @@ function closeQuote(){document.getElementById('quoteModal').classList.remove('sh
   </div>
 </div>
 
-<!-- Sticky Mobile CTA Button -->
-<button id="mobileCTA" onclick="openQuote()">Get a Quote</button>
-
-<!-- WhatsApp Button -->
 <a id="whatsappBtn" href="https://wa.me/14168171625" target="_blank">💬</a>
 
 <footer>
